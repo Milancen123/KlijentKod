@@ -4,7 +4,7 @@ import axios from "axios";
 import Nav from "./nav";
 import RideHistory from "./rideHistory";
 
-const PrivateScreenHistory = () => {
+const DriverHistoryRidesScreen = () => {
   const navigate = useNavigate();
   const [rideData, setRideData] = useState([]); // Changed initial state to an empty array
   const [loading, setLoading] = useState(true); // Add loading state
@@ -25,7 +25,7 @@ const PrivateScreenHistory = () => {
         };
 
         const response = await axios.get(
-          `http://localhost:5000/api/private/getRidesByPassengerID`, // Removed the extra slash
+          `http://localhost:5000/api/driver/getRidesByDriverID`, // Removed the extra slash
           config
         );
 
@@ -72,7 +72,7 @@ const PrivateScreenHistory = () => {
     <div className="h-screen flex flex-col">
       <header className="bg-white px-6">
         <section className="flex flex-col ml-auto mr-auto py-3">
-          <Nav />
+          <Nav tab={"driver"}/>
         </section>
       </header>
       <section className="h-full w-full">
@@ -96,7 +96,7 @@ const PrivateScreenHistory = () => {
                   end_dest={ride.end_dest}
                   end_time={ride.end_time}
                   first_name={ride.first_name}
-                  type="passenger"
+                  type="driver"
                 />
               ))
             ) : (
@@ -110,4 +110,4 @@ const PrivateScreenHistory = () => {
   );
 };
 
-export default PrivateScreenHistory;
+export default DriverHistoryRidesScreen;

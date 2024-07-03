@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Nav from "./nav";
 
-const PrivateScreenRide = () => {
+const PrivateScreenRide = ({tab}) => {
   const { ride_id } = useParams();
   const navigate = useNavigate();
   const [rideData, setRideData] = useState(null); // Changed to null to handle the loading state
@@ -35,6 +35,8 @@ const PrivateScreenRide = () => {
       }
     } catch (err) {}
   };
+
+  
 
   const getPassengers = async() => {
     try {

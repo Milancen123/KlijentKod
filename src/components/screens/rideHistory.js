@@ -1,10 +1,14 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const RideHistory = ({ id, date, start_dest, start_time, end_dest, end_time, first_name }) => {
+const RideHistory = ({ id, date, start_dest, start_time, end_dest, end_time, first_name, type }) => {
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate(`/ride/${id}`);
+        if(type == 'passenger'){
+            navigate(`/ride/${id}`);
+        }else{
+            navigate(`/driver/ride/${id}`);
+        }
     };
 
     const getDateClass = (date) => {

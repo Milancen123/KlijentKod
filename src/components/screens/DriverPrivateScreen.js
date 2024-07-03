@@ -10,7 +10,7 @@ const DriverPrivateScreen = () => {
     const [startTime, setStartTime] = useState("");
     const [dateOfDepart, setDateOfDepart] = useState("");
     const [estimatedTime, setEstimatedTime] = useState("");
-
+    const [submited, setSubmited] = useState(false);
     const handleSubmit = async (event) => {
         event.preventDefault();
         const convertedPriceInCents = parseInt((parseFloat(priceInCents) / 117) * 100);
@@ -39,13 +39,24 @@ const DriverPrivateScreen = () => {
                 {numSeats, priceInCents: convertedPriceInCents, startDest, endDest, startTime, dateOfDepart, estimatedTime},
                 config
             );
-            console.log(response);
+            if(response.data.success) {
+                //display success message
+                setSubmited(true);
+            }
+
+
         } catch (err) {
             console.log(err);
         }
         // Handle the form submission
     }
     
+        const showTheDisplay = ()=>{
+            setSubmited(false);
+            return (<div className="bg-red-500 text-white w-60 h-60">
+                OVde je neki tekst
+            </div>)     
+        }
     
 
     const converPriceInCents = (price)=>{
@@ -145,7 +156,7 @@ const DriverPrivateScreen = () => {
                     </button>
                 </form>
             </div>
-            
+            {submited && showTheDisplay()}
         </div>
     );
 };

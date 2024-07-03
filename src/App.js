@@ -6,6 +6,9 @@ import RegisterScreen from "./components/screens/RegisterScreen";
 import PrivateScreenRide from "./components/screens/PrivateScreenRide";
 import PrivateScreenHistory from "./components/screens/privateScreenHistory";
 import DriverPrivateScreen from "./components/screens/DriverPrivateScreen";
+import DriverHistoryRidesScreen from "./components/screens/DriverHistoryRidesScreen";
+import DriverScreenRide from "./components/screens/DriverScreenRide";
+import Settings from "./components/screens/Settings";
 
 const App = () => {
   return (
@@ -14,6 +17,8 @@ const App = () => {
 
       <Route path="/history" element={<PrivateScreenHistory/>}/>
 
+      <Route path="/driver_history" element={<DriverHistoryRidesScreen/>}/>
+      <Route path="/settings" element={<Settings/>}/>
         <Route
           path="/"
           element={
@@ -22,7 +27,6 @@ const App = () => {
             </PrivateRoute>
           }
         />
-
         <Route
           path="/driver"
           element={
@@ -32,6 +36,11 @@ const App = () => {
           }
         />
         
+        <Route 
+          path="/driver/ride/:ride_id"
+          element= {
+            <DriverScreenRide/>
+          }/>
 
         <Route
           path="/ride/:ride_id"

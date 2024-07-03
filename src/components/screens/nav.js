@@ -20,10 +20,19 @@ const Nav = ({ tab }) => {
 
   const redirectPutovanja = () => {
     if (!!localStorage.getItem("authToken")) {
-      navigate("/history");
+      if(tab=='passenger'){
+        navigate("/history");
+      }else{
+        navigate("/driver_history");
+      }
     }
   };
-
+  
+  const redirectSettings = ()=> {
+    if (!!localStorage.getItem("authToken")) {
+      navigate("/settings");
+    }
+  }
   return (
     <nav className="w-full flex flex-row flex-wrap py-4">
       <div className="flex flex-1 items-center">
@@ -71,7 +80,7 @@ const Nav = ({ tab }) => {
                 <p>Sve voznje</p>
               </div>
             )}
-            <div className="flex items-center py-4 px-2 justify-left hover:bg-gray-100 transition-colors duration-150 cursor-pointer">
+            <div onClick={redirectSettings} className="flex items-center py-4 px-2 justify-left hover:bg-gray-100 transition-colors duration-150 cursor-pointer">
               <img alt="settings" className="w-10 h-10" src="/settings.png" />
               <p>Settings</p>
             </div>
