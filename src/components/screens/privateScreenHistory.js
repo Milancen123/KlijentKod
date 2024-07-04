@@ -72,7 +72,7 @@ const PrivateScreenHistory = () => {
     <div className="h-screen flex flex-col">
       <header className="bg-white px-6">
         <section className="flex flex-col ml-auto mr-auto py-3">
-          <Nav />
+          <Nav tab="passenger"/>
         </section>
       </header>
       <section className="h-full w-full">

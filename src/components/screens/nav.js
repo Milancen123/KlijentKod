@@ -30,7 +30,12 @@ const Nav = ({ tab }) => {
   
   const redirectSettings = ()=> {
     if (!!localStorage.getItem("authToken")) {
-      navigate("/settings");
+      if(tab == "driver") {
+        navigate("/settings-driver")
+      }else{
+        navigate("/settings");
+      }
+
     }
   }
   return (

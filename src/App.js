@@ -9,6 +9,7 @@ import DriverPrivateScreen from "./components/screens/DriverPrivateScreen";
 import DriverHistoryRidesScreen from "./components/screens/DriverHistoryRidesScreen";
 import DriverScreenRide from "./components/screens/DriverScreenRide";
 import Settings from "./components/screens/Settings";
+import SettingsDriver from './components/screens/SettingsDriver';
 
 const App = () => {
   return (
@@ -16,9 +17,9 @@ const App = () => {
       <Routes>
 
       <Route path="/history" element={<PrivateScreenHistory/>}/>
-
       <Route path="/driver_history" element={<DriverHistoryRidesScreen/>}/>
       <Route path="/settings" element={<Settings/>}/>
+      <Route path="/settings-driver" element={<SettingsDriver/>}/>
         <Route
           path="/"
           element={
@@ -51,7 +52,7 @@ const App = () => {
           }
         />
         <Route path="/login" element={<LoginScreen />} />
-        <Route path="/register" element={<RegisterScreen />} />
+        <Route path="/register" element={<RegisterScreen/>}/>
       </Routes>
     </Router>
   );

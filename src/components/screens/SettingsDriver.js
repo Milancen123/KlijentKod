@@ -20,9 +20,9 @@ const PassengerSettings = ({ history, tab }) => {
             }
 
             try {
-                    const { data } = await axios.get("http://localhost:5000/api/private/user", config);
-                    setUser(data.data);
 
+                    const { data } = await axios.get("http://localhost:5000/api/driver/user", config);
+                    setUser(data.data);
             } catch (error) {
                 localStorage.removeItem("authToken");
                 setError("You are not authorized please login");
@@ -48,7 +48,7 @@ const PassengerSettings = ({ history, tab }) => {
             }
         }
         try {
-            await axios.put("http://localhost:5000/api/private/user", user, config);
+            await axios.put("http://localhost:5000/api/driver/user", user, config);
             alert("Changes saved successfully!");
         } catch (error) {
             console.error(error);
@@ -62,7 +62,7 @@ const PassengerSettings = ({ history, tab }) => {
         <div className='bg-gray-100 min-h-screen'>
             <header className='flex flex-col justify-center bg-white border-gray-200 border-b-2'>
                 <section className="flex flex-col ml-auto mr-auto py-4">
-                    <Nav tab="passenger" />
+                    <Nav tab="driver" />
                 </section>
             </header>
             <section className='flex flex-col items-center mt-10'>
