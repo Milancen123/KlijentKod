@@ -8,7 +8,6 @@ const Signup = () => {
     const [email, setEmail] = useState(''); // Initialize state for email input
     const [password, setPassword] = useState(''); // Initialize state for password input
     const [carModel, setCarModel] = useState(''); // Initialize state for car model input (driver-specific)
-    const [carImage, setCarImage] = useState(null); // Initialize state for car image input (driver-specific)
     const [bankAcc, setBankAcc] = useState(''); // Initialize state for bank account input (driver-specific)
     const [plateNumber, setPlateNumber] = useState(''); // Initialize state for plate number input (driver-specific)
 
@@ -20,7 +19,7 @@ const Signup = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        
+        console.log("REGISTROVAO SAM SE");
         const formData = {
             first_name: firstName,
             last_name: lastName,
@@ -28,14 +27,14 @@ const Signup = () => {
             password,
             ...(tab === 'driver' && {
                 car_model: carModel,
-                car_image: carImage,
                 bank_acc: bankAcc,
                 plate_number: plateNumber
             })
         };
 
         try {
-            const response = await fetch(`http://localhost:8000/v1/${tab}/register`, {
+            const api = tab=='passenger'?"/api/auth/register":"/api/auth/register_driver";
+            const response = await fetch(`http://localhost:5000${api}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -160,13 +159,6 @@ const Signup = () => {
                                 placeholder='Car Model'
                                 value={carModel}
                                 onChange={(e) => setCarModel(e.target.value)}
-                                className='mb-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500'
-                                required
-                            />
-                            <input
-                                type='file'
-                                accept='image/*'
-                                onChange={(e) => setCarImage(e.target.files[0])}
                                 className='mb-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500'
                                 required
                             />

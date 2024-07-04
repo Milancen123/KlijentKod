@@ -48,7 +48,9 @@ const LoginScreen = () => {
             }, 5000);
         }
     };
-
+    const redirectSignUp = ()=>{
+            navigate("/register");
+    }
     return (
         <div className='flex items-center justify-center w-full h-screen bg-gradient-to-r from-cyan-500 to-blue-500'>
             <div className='flex flex-col bg-white rounded-lg p-8 shadow-lg'>
@@ -94,10 +96,11 @@ const LoginScreen = () => {
                             >
                                 Login
                             </button>
-                            <button className='bg-gray-300 text-gray-700 py-2 rounded-lg mt-2 hover:bg-gray-400 transition-colors duration-200'>
+
+                        </form>
+                        <button onClick={redirectSignUp} className='bg-gray-300 text-gray-700 w-full py-2 rounded-lg mt-2 hover:bg-gray-400 transition-colors duration-200'>
                                 SignUp
                             </button>
-                        </form>
                     </div>
                 )}
                 {tab === 'driver' && (
@@ -128,12 +131,10 @@ const LoginScreen = () => {
                             >
                                 Login
                             </button>
-                            <button className='bg-gray-300 text-gray-700 py-2 rounded-lg mt-2 hover:bg-gray-400 transition-colors duration-200'>
+                        </form>
+                        <button onClick={redirectSignUp} className='bg-gray-300 w-full text-gray-700 py-2 rounded-lg mt-2 hover:bg-gray-400 transition-colors duration-200'>
                                 SignUp
                             </button>
-                        </form>
-
-                            
                     </div>
                 )}
                  {error ? <div>{error}</div> : <div></div>}
